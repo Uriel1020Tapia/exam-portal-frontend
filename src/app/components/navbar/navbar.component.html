@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">
+  <a
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    [routerLink]="'/home'"
+  >
+    <mat-icon>menu_book</mat-icon>
+  </a>
+  <span>Exam-App</span>
+  <span class="example-spacer"></span>
+  <a
+  *ngIf="!tokenstorageSvc.isLoggedIn()"
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+    [routerLink]="'/login'"
+  >
+    Login
+  </a>
+  <a
+  *ngIf="!tokenstorageSvc.isLoggedIn()"
+    mat-icon-button
+    class="m-3"
+    aria-label="Example icon-button with share icon"
+    [routerLink]="'/signup'"
+  >
+    Register
+  </a>
+  <a
+  *ngIf="tokenstorageSvc.isLoggedIn()"
+    mat-icon-button
+    class="mr-3"
+    aria-label="Example icon-button with share icon"
+  >
+   @{{tokenstorageSvc.getUser().username}}
+  </a>
+
+  <a
+  *ngIf="tokenstorageSvc.isLoggedIn()"
+    mat-icon-button
+    class="ml-3"
+    aria-label="Example icon-button with share icon"
+    (click)="tokenstorageSvc.signOut()"
+  >
+    Logout
+  </a>
+</mat-toolbar>
